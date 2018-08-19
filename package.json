@@ -1,0 +1,17 @@
+{
+  "name": "javascript_design",
+  "version": "1.0.0",
+  "description": "SOLID *\tS-单一职责原则 *\tO-开放封闭原则 *\tL-李氏转换原则 *\tI-接口独立原则 *\tD-依赖导致原则 ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-latest": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0"
+  }
+}
