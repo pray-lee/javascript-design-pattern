@@ -13,6 +13,7 @@ SingleObject.getInstance = (function(){
 		if(!instance){
 			instance = new SingleObject('pray-lee')
 		}
+		return instance
 	}
 })()
 
