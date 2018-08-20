@@ -1,28 +1,21 @@
-class SingleObject{
-	constructor(name) {
-		this.name = name
-	}
-	init() {
-		console.log('init finished')
+class Adaptee{
+	specificRequest() {
+		return 'the old one'
 	}
 }
 
-SingleObject.getInstance = (function(){
-	let instance = null
-	return function(){
-		if(!instance){
-			instance = new SingleObject('pray-lee')
-		}
-		return instance
+class Target{
+	constructor() {
+		this.adaptee = new Adaptee()
 	}
-})()
+	request() {
+		let info = this.adaptee.specificRequest()
+		return `${info}->the new one`
+	}
+}
 
-let obj1 = SingleObject.getInstance()
+let target = new Target()
 
-let obj2 = SingleObject.getInstance()
+let info = target.request()
 
-console.log(obj1 === obj2) //=>true
-
-let obj3 = new SingleObject('pray-lee')
-
-console.log(obj1 === obj3) //=>false
+console.log(info)
