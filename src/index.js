@@ -1,4 +1,4 @@
-//主题
+//主题 是被观察的主体
 class Subject {
 	constructor() {
 		this.state = 0
@@ -9,7 +9,7 @@ class Subject {
 	}
 	setState(state) {
 		this.state = state
-		this.notifyAllObservers()
+		this.notifyAllObservers() //当主题发生变化，则反馈到所有的观察者。
 	}
 	notifyAllObservers() {
 		this.observers.forEach(item => {
@@ -22,7 +22,7 @@ class Subject {
 
 } 
 
-//观察者
+//观察者 主体发生改变，则观察者会做出相应的反应。
 class Observer{
 	constructor(name, subject) {
 		this.name = name
