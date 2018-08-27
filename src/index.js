@@ -14,3 +14,38 @@
 //顺序遍历有序集合
 //使用者不必知道内部结构，直接使用即可
 
+class Container {
+	constructor (list) {
+		this.list = list
+	}
+	getIterator () {
+		return new Iterator(this)
+	}
+}
+
+class Iterator {
+	constructor (container) {
+		this.data = container.list
+		this.index = 0
+	}
+	hasNext() {
+		if(this.index >= this.data.length){
+			return false
+		}
+		return true
+	}
+	next() {
+		if(this.hasNext()){
+			console.log(this.index, 'index...')
+			return this.data[this.index++]
+		}
+	}
+} 
+
+//test code
+let arr = [1, 2, 3, 4, 5]
+let container = new Container(arr)
+let iterator = container.getIterator()
+while(iterator.hasNext()){
+	console.log(iterator.next())
+}

@@ -1,7 +1,7 @@
 const path = require('path')
 const htmlWebHtml = require('html-webpack-plugin')
 module.exports = {
-	entry: '.src/index.js',
+	entry: './src/index.js',
 	output: {
 		filename: 'build.js',
 		path: __dirname + '/dist'
@@ -9,20 +9,19 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				use: 'babel-loader',
-				option: {
-					'presets': [latest]
-				},
-				//打包除这个文件之外的文件
-                exclude: path.resolve(__dirname,"./node_modules"),
-                //打包包括的文件
-                include: path.resolve(__dirname, "./src"),
-			},
+		      test: /\.js$/,
+		      exclude: /(node_modules|bower_components)/,
+		      use: {
+		        loader: 'babel-loader',
+		        options: {
+		          presets: ['@babel/preset-env']
+		        }
+		      }
+		    }
 		]
 	},
 	plugins: [
-		new htmlWebpackPlugin({
+		new htmlWebHtml({
             filename: 'index.html',
             template: "index.html"
         })
