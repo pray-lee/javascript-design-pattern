@@ -1,43 +1,16 @@
-//主题 是被观察的主体
-class Subject {
-	constructor() {
-		this.state = 0
-		this.observers = []
-	}
-	getState() {
-		return this.state
-	}
-	setState(state) {
-		this.state = state
-		this.notifyAllObservers() //当主题发生变化，则反馈到所有的观察者。
-	}
-	notifyAllObservers() {
-		this.observers.forEach(item => {
-			item.update()
-		})
-	}
-	attach(observer) {
-		this.observers.push(observer)
-	}
+// let a = [1, 2, 3]
+// let b = document.getElementsByTagName('div')
+// let c = $('div')
 
-} 
+//上面这三个数组通过一个方法进行遍历
 
-//观察者 主体发生改变，则观察者会做出相应的反应。
-class Observer{
-	constructor(name, subject) {
-		this.name = name
-		this.subject = subject
-		this.subject.attach(this)
-	}
-	update() {
-		console.log(`${this.subject.getState()}`)
-	}
-}
-//test code...
-let s = new Subject()
-let o1 = new Observer('o1', s)
-let o2 = new Observer('o2', s)
-let o3 = new Observer('o3', s)
-s.setState(1)
-s.setState(2)
-s.setState(3)
+// function commonEach (data) {
+// 	var $data = $(data)   //把data转换成jquery对象，就可以生成一个jquery迭代器
+// 	$data.each( function (index, val) {
+// 		console.log(index, val)
+// 	})
+// }
+
+//顺序遍历有序集合
+//使用者不必知道内部结构，直接使用即可
+
