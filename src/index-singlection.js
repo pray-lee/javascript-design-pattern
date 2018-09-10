@@ -44,4 +44,4 @@ var mySingleton1 = (function () {
 mySingleton1.getInstance().publicMethod()
 var s1 = mySingleton1.getInstance()
 var s2 = mySingleton1.getInstance()
-console.log(s1 === s2)
+console.log(s1 === s2) //true
