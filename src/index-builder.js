@@ -3,7 +3,7 @@
 //code
 function getSomeData (id, callback) {
   //创建一个异步请求
-  var url = 'http://lbs-api.bd-cloud.com.cn/api/lbs/alarmInfos/getOnlineAlarmInfosNumber.go?token=amlmZWk6MTUzNjIwNDc1Mzg2Mw==&_=1536550146189&id=' + id
+  var url = 'someLink' + id
   var xmlHttp = new XMLHttpRequest()
   xmlHttp.addEventListener('readystatechange', function () {
     if (xmlHttp.readyState === 4) {
