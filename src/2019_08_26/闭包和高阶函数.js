@@ -124,7 +124,6 @@ Function.prototype.after = function (afterFn) {
 
 var func = function () {
   console.log(2)
-  return 111
 }
 func = func.before(function() {
   console.log(1)
