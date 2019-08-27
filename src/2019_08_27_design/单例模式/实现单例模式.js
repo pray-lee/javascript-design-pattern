@@ -8,7 +8,6 @@ Singleton.prototype.getName = function () {
 }
 Singleton.getInstance = function (name) {
   console.log(this.instance)
-  console.log(1)
   if (!this.instance) {
     this.instance = new Singleton(name)
   }
