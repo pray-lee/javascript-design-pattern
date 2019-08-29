@@ -7,7 +7,6 @@ var CreateDiv = (function () {
 
   // 构造器
   var CreateDiv = function (html) {
-    console.log(instance)
     if (instance) {
       return instance
     }
