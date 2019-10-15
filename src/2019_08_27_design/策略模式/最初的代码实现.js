@@ -76,3 +76,4 @@ var strategies = {
 var calculateBonus = function (level, salary) {
   return strategies[level](salary)
 }
+console.log(calculateBonus('S', 20000)) // 80000
