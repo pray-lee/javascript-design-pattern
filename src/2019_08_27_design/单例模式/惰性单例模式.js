@@ -11,10 +11,6 @@ var createLoginLayer = function () {
   // logic
   return 'createLoginLayer'
 }
-var createOtherLayer = function () {
-  // logic
-  return 'createOtherLayer'
-}
 
 var createSingleLoginLayer = getSingle(createLoginLayer)
 var createSingleLoginLayer1 = getSingle(createLoginLayer)

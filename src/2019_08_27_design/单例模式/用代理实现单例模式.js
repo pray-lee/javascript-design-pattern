@@ -23,6 +23,7 @@ var ProxySingletonCreateDiv = (function () {
   }
 })()
 
+
 var a = new ProxySingletonCreateDiv('sven1')
 var b = new ProxySingletonCreateDiv('sven2')
 
