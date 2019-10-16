@@ -12,7 +12,6 @@ if (registerForm.phoneNumber === '') {
     alert('请输入手机号码')
     return false
 }
-return true
 
 
 
@@ -35,18 +34,25 @@ var strategies = {
     }
 }
 
+
 // Validator 类
 var Validator = function () {
     this.cache = [] // 保存校验规则
 }
-Validator.prototype.add = function (dom, rule, errorMsg) {
-   var ary = rule.split(':')  // 把strategy和参数分开
-   this.cache.push(function () {
-       var strategy = ary.shift();
-       ary.unshift(dom.value)
-       ary.push(errorMsg)
-       return strategies[strategy].apply(dom, ary)
-   })
+Validator.prototype.add = function (dom, rules) {
+    var self = this
+    for (var i = 0, rule; rule = rules[i++];) {
+        (function (rule) {
+            var strategyAry = rule.strategy.split(':')
+            var errorMsg = rule.errorMsg
+            self.cache.push(function () {
+                var strategy = strategyAry.shift()
+                strategy.unshift(dom.value)
+                strategy.push(errorMsg)
+                return strategies[strategy].apply(dom, strategyAry)
+            })
+        })(rule)
+    }
 }
 
 Validator.prototype.start = function () {
@@ -55,7 +61,6 @@ Validator.prototype.start = function () {
         if (msg) {
             return msg
         }
-
     }
 }
 
@@ -64,9 +69,20 @@ var validataFunc = function () {
     var validator = new Validator() // 创建一个validator对象
 
     // 添加一些校验规则
-    validator.add(registerForm.userName, 'isNotEmpty', '用户名不能为空')
-    validator.add(registerForm.phoneNumber, 'isMobile', '请填写正确的手机号')
-    validator.add(registerForm.password, 'minLenth:6', '密码过长')
+    validator.add(registerFomr.userName, [{
+        strategy: 'isNonEmpty',
+        errorMsg: '用户名不能为空'
+    }, {
+        strategy: 'minLength:6',
+        errorMsg: '用户名过长'
+    }])
+    validator.add(registerFomr.password, [{
+        strategy: 'isNonEmpty',
+        errorMsg: '密码不能为空'
+    }, {
+        strategy: 'minLength:6',
+        errorMsg: '密码过长'
+    }])
 
     var errorMsg = validator.start() // 获取校验结果
     return errorMsg
